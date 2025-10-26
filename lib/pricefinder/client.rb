@@ -1,5 +1,5 @@
 require 'faraday'
-require 'faraday_middleware'
+require 'faraday/middleware'
 
 require 'pricefinder/configuration'
 require 'pricefinder/error'
@@ -78,7 +78,7 @@ module Pricefinder
       if @retry_count == 0
         # Get a new access token
         get_access_token(true)
-        
+
         # Retry
         @retry_count += 1
       end
@@ -88,7 +88,7 @@ module Pricefinder
 
     def get_access_token(force_auth = false)
       config_params = @configuration.config_params
-      
+
       # If we were passed an access token use it
       if !force_auth && token = config_params[:access_token]
         @configuration.access_token = token
@@ -105,7 +105,7 @@ module Pricefinder
         authenticate_client_credentials(client_id, client_secret)
       end
     end
-    
+
     def authenticate_client_credentials(client_id, client_secret)
       response = @connection.post('oauth/token', {
         :grant_type => 'client_credentials',
