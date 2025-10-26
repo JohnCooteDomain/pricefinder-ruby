@@ -29,6 +29,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rb-readline", "~> 0"
 
   spec.add_dependency "faraday", "~> 2.2"
-  spec.add_dependency "faraday_middleware", "~> 0"
   spec.add_dependency "json", "~> 2.1"
 end
